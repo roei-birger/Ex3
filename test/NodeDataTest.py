@@ -13,7 +13,7 @@ class NodeDataTest(unittest.TestCase):
         n.addNi(n2, 9.4)
         n.tag = 1
         n.info = "b"
-        n.myLocation = [1, 1, 1]
+        n.myLocation = (1, 1, 1)
 
     def test_hasNi(self):
         self.assertTrue(n.hasNi(2), "hasNi didn't return the correct answer")
