@@ -71,3 +71,13 @@ class DiGraph(GraphInterface):
             self.mc = self.mc + 1
             return True
         return False
+
+    """object"""
+
+    def __str__(self) -> str:
+        return f"{self.vertices}"
+
+    """inner object"""
+
+    def __repr__(self) -> str:
+        return f"{self.vertices}"

@@ -1,7 +1,7 @@
 from typing import List
 from Map import Map
 import heapq
-
+import json
 from GraphAlgoInterface import GraphAlgoInterface
 from NodeData import NodeData
 from DiGraph import DiGraph
@@ -9,7 +9,7 @@ from DiGraph import DiGraph
 
 class GraphAlgo(GraphAlgoInterface):
 
-    def __init__(self, g: DiGraph):
+    def __init__(self, g: DiGraph = None):
         self.my_g = g
         self.path = {}
 
@@ -17,10 +17,58 @@ class GraphAlgo(GraphAlgoInterface):
         return self.my_g
 
     def load_from_json(self, file_name: str) -> bool:
-        pass
+        try:
+            self.my_g = DiGraph()
+            fp = open(file_name)
+            temp_graph = json.load(fp)
+            edges_dic = temp_graph.get('Edges')
+            nodes_dic = temp_graph.get('Nodes')
+
+            for i in nodes_dic:
+                if i.get('pos') is not None:
+                    pos_i = i['pos']
+                    pos_list = pos_i.split(sep=",", maxsplit=2)
+                    temp_id = i.get('id')
+                    self.my_g.add_node(node_id=NodeData(temp_id).id, pos=(float(pos_list[0]), float(pos_list[1]),
+                                                                          float(pos_list[2])))
+                else:
+                    temp_id = i.get('id')
+                    self.my_g.add_node(node_id=NodeData(temp_id).id)
+
+            for j in edges_dic:
+                weight = j.get('w')
+                src = j.get('src')
+                dest = j.get('dest')
+                self.my_g.add_edge(src, dest, weight)
+            fp.close()
+        except FileExistsError:
+            return False
+        return True
 
     def save_to_json(self, file_name: str) -> bool:
-        pass
+        if self.my_g is None:
+            return False
+
+        edges = []
+        nodes = []
+
+        for i in self.my_g.vertices:
+            id = i
+            pos = self.my_g.get_node(i).myLocation
+            nodes.append({"pos": pos, "id": id})
+
+        for j in self.my_g.vertices:
+            for k in self.my_g.get_node(j).outEdges:
+                src = j
+                w = self.my_g.get_node(j).outEdges[k]
+                dest = k
+                edges.append({"src": src, "w": w, "dest": dest})
+
+        graph = {"Nodes": nodes, "Edges": edges}
+        with open(file_name, 'w') as json_file:
+            json.dump(graph, json_file)
+
+        return True
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
         dist = self.shortest_path_dist(id1, id2)
@@ -91,13 +139,23 @@ class GraphAlgo(GraphAlgoInterface):
 
 
 if __name__ == '__main__':
-    print("f")
-    # q = []
-    # first = Map(3)
-    # first.dis = 5
-    # heapq.heappush(q, first)
-    # sec = Map(4)
-    # sec.dis = 6
-    # heapq.heappush(q, sec)
-    # print(q.pop(0).id)
-    # print(q.pop(0).id)
+    g = DiGraph
+    ga = GraphAlgo(g)
+    print(ga.load_from_json("A0"))
+    # save
+    # rand_dict = {"name": "yossi", "age": 34}
+    # with open("yossi.json", 'w') as json_file:
+    #     json.dump(rand_dict, json_file)
+
+    # load
+    # fp = open("A0")
+    # temp_graph = json.load(fp)
+    # edges_dic = temp_graph.get('Edges')
+    # nodes_dic = temp_graph.get('Nodes')
+    # my_g = DiGraph
+    # for i in nodes_dic:
+    #     pos_i = i['pos']
+    #     pos_list = pos_i.split(sep=",", maxsplit=2)
+    #     temp_node = NodeData(i['id'], 0, (float(pos_list[0]), float(pos_list[1]), float(pos_list[2])))
+    #     my_g.add_node(1)
+    # print(my_g)

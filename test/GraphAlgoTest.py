@@ -80,6 +80,32 @@ class MyTestCase(unittest.TestCase):
         ga = GraphAlgo(None)
         self.assertEqual((-1, None), ga.shortest_path(0, 4), "shortest_path returns uncorrected list at null graph")
 
+    def test_save_and_lods(self):
+        g = DiGraph()
+        g.add_node(NodeData(0).id)
+        g.add_node(NodeData(3).id)
+        g.add_node(NodeData(13).id)
+        g.add_edge(0, 13, 8.9)
+        g.add_edge(3, 13, 8.9)
+
+        ga = GraphAlgo(g)
+
+        g1 = DiGraph()
+        g1.add_node(NodeData(0).id)
+        g1.add_node(NodeData(3).id)
+        g1.add_node(NodeData(13).id)
+        g1.add_edge(0, 13, 8.9)
+        g1.add_edge(3, 13, 8.9)
+        ga.save_to_json("save_test.json")
+
+        ga1 = GraphAlgo(None)
+        ga1.load_from_json("save_test.json")
+        g2 = ga1.get_graph()
+        self.assertEqual(g1.__str__(), g2.__str__(), "load return different graph")
+
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
