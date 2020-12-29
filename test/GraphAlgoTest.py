@@ -59,10 +59,26 @@ class MyTestCase(unittest.TestCase):
         g.add_node(NodeData(16).id)
         self.assertEqual(-1, ga.shortest_path_dist(0, 16), "shortest_path_dist returns uncorrected dist")
 
+    def test_shortest_path_base(self):
+        g.add_edge(13, -1, 40)
+        finalList = [53, 555, 66, 0, -101]
+        self.assertEqual((28.4, finalList).__str__(), ga.shortest_path(53, -101).__str__(), "shortest_path returns "
+                                                                                            "uncorrected list")
+        finalList = [13, 3, -15, -1]
+        self.assertEqual((19.0, finalList).__str__(), ga.shortest_path(13, -1).__str__(), "shortest_path returns "
+                                                                                          "uncorrected list")
+        finalList = [66, 0, 555]
+        self.assertEqual((6.5, finalList).__str__(), ga.shortest_path(66, 555).__str__(), "shortest_path returns "
+                                                                                          "uncorrected list")
 
+    def test_shortest_path_node_to_himself(self):
+        finalList = [0]
+        self.assertEqual((0, finalList).__str__(), ga.shortest_path(0, 0).__str__(),
+                         "shortest_path returns uncorrected list from a node to itself")
 
-
-
+    def test_shortest_path_null_graph(self):
+        ga = GraphAlgo(None)
+        self.assertEqual((-1, None), ga.shortest_path(0, 4), "shortest_path returns uncorrected list at null graph")
 
 
 if __name__ == '__main__':

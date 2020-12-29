@@ -23,7 +23,22 @@ class GraphAlgo(GraphAlgoInterface):
         pass
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
-        pass
+        dist = self.shortest_path_dist(id1, id2)
+        if dist < 0:
+            return -1, None
+        final_list = []
+        temp0 = path[id2]
+        tempN = self.my_g.get_node(temp0.id)
+        if id1 == id2:
+            final_list.append(tempN.id)
+            return 0, final_list
+        final_list.append(tempN.id)
+        while temp0.dis > 0:
+            temp0 = temp0.parent
+            tempN = self.my_g.get_node(temp0.id)
+            final_list.append(tempN)
+        final_list.reverse()
+        return dist, final_list
 
     def shortest_path_dist(self, id1: int, id2: int) -> float:
         global path
@@ -33,13 +48,13 @@ class GraphAlgo(GraphAlgoInterface):
         if id1 not in self.my_g.vertices or id2 not in self.my_g.vertices:
             return -1
         q = []
-        if id1 == id2:
-            return 0
         first = Map(id1)
         first.flag = 1
         first.dis = 0
         heapq.heappush(q, first)
         path[id1] = first
+        if id1 == id2:
+            return 0
         while q:
             temp = q.pop(0)
             if temp.flag == 1:
