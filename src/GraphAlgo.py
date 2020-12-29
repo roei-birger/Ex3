@@ -137,25 +137,3 @@ class GraphAlgo(GraphAlgoInterface):
     def plot_graph(self) -> None:
         pass
 
-
-if __name__ == '__main__':
-    g = DiGraph
-    ga = GraphAlgo(g)
-    print(ga.load_from_json("A0"))
-    # save
-    # rand_dict = {"name": "yossi", "age": 34}
-    # with open("yossi.json", 'w') as json_file:
-    #     json.dump(rand_dict, json_file)
-
-    # load
-    # fp = open("A0")
-    # temp_graph = json.load(fp)
-    # edges_dic = temp_graph.get('Edges')
-    # nodes_dic = temp_graph.get('Nodes')
-    # my_g = DiGraph
-    # for i in nodes_dic:
-    #     pos_i = i['pos']
-    #     pos_list = pos_i.split(sep=",", maxsplit=2)
-    #     temp_node = NodeData(i['id'], 0, (float(pos_list[0]), float(pos_list[1]), float(pos_list[2])))
-    #     my_g.add_node(1)
-    # print(my_g)
