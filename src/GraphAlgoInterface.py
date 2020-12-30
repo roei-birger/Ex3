@@ -23,7 +23,7 @@ class GraphAlgoInterface:
         """
         Saves the graph in JSON format to a file
         @param file_name: The path to the out file
-        @return: True if the save was successful, Flase o.w.
+        @return: True if the save was successful, False o.w.
         """
         raise NotImplementedError
 
@@ -33,7 +33,6 @@ class GraphAlgoInterface:
         @param id1: The start node id
         @param id2: The end node id
         @return: The distance of the path, the path as a list
-
         Example:
 #      >>> from GraphAlgo import GraphAlgo
 #       >>> g_algo = GraphAlgo()
@@ -46,7 +45,6 @@ class GraphAlgoInterface:
 #        (1, [0, 1])
 #        >>> g_algo.shortestPath(0,2)
 #        (5, [0, 1, 2])
-
         More info:
         https://en.wikipedia.org/wiki/Dijkstra's_algorithm
         """
