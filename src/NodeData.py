@@ -1,9 +1,12 @@
 class NodeData:
-    def __init__(self, id: int, tag: int = 0, location: tuple = (0, 0, 0)):
+    def __init__(self, id: int, tag: int = 0, location: tuple = None):
         self.id = id
         self.tag = tag
         self.info = ""
-        self.myLocation = location
+        if location is not None:
+            self.myLocation = location
+        else:
+            self.myLocation = (0, 0, 0)
         self.myNeighbors = {}  # <id_node , node_data>
         self.inEdges = {}  # <id_src , weight>
         self.outEdges = {}  # <id_dest , weight>
