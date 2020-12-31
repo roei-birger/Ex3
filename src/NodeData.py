@@ -1,6 +1,6 @@
 class NodeData:
     """ This class represents the set of operations applicable on a node (vertex) in a directional weighted graph.
-    The vertex's neighbors and the connected edges are implemented by HashMap for high efficiency."""
+    The vertex's neighbors and the connected edges are implemented by dictionary for high efficiency."""
 
     def __init__(self, id: int, tag: int = 0, location: tuple = None):
         """Constructs a NodeData with the same details that was received."""
