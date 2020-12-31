@@ -8,15 +8,29 @@ from DiGraph import DiGraph
 
 
 class GraphAlgo(GraphAlgoInterface):
+    """This class creates a graph and includes algorithms:
+    -if the graph is connected
+    -How long it takes to get from one vertex to another
+    -What is the shortest path from one vertex to another
+    -Saves the graph to the given file name
+    -Loads a graph to graph algorithm"""
 
     def __init__(self, g: DiGraph = None):
+        """A default constructor and preforms a shallow copy graph.
+        @param g"""
         self.my_g = g
         self.path = {}
 
     def get_graph(self) -> DiGraph:
+        """@return the DiGraph at the GraphAlgo.init"""
         return self.my_g
 
     def load_from_json(self, file_name: str) -> bool:
+        """This function loads a graph to graph algorithm from JSON format file.
+        If the file was successfully loaded - the graph will be changed,
+        If graph was not loaded the original graph should remain "as is".
+        @param file_name - file name
+        @return true - if the graph was successfully loaded."""
         try:
             self.my_g = DiGraph()
             fp = open(file_name, 'r')
@@ -46,6 +60,10 @@ class GraphAlgo(GraphAlgoInterface):
         return True
 
     def save_to_json(self, file_name: str) -> bool:
+        """* This function saves the directed weighted graph to the given
+        file name - in JSON format
+        @param file_name - the file name .
+        @return true - iff the file was successfully saved"""
         if self.my_g is None:
             return False
 
@@ -73,6 +91,10 @@ class GraphAlgo(GraphAlgoInterface):
         return True
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
+        """Returns the shortest path from node id1 to node id2 using Dijkstra's Algorithm
+        @param id1: The start node id
+        @param id2: The end node id
+        @return: The distance of the path, a list of the nodes ids that the path goes through"""
         dist = self.shortest_path_dist(id1, id2)
         if dist < 0:
             return float('inf'), []
@@ -91,6 +113,11 @@ class GraphAlgo(GraphAlgoInterface):
         return dist, final_list
 
     def shortest_path_dist(self, id1: int, id2: int) -> float:
+        """This function returns the length of the shortest path between two vertexes on the graph
+        by checking all the graph vertexes edges and its neighbors edges
+        by pushing them to a priority queue (Dijkstra algorithm)
+        @param id1  - start node
+        @param id2 - end (target) node"""
         global path
         path = {}
         if self.my_g is None:
