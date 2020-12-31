@@ -75,7 +75,7 @@ class GraphAlgo(GraphAlgoInterface):
     def shortest_path(self, id1: int, id2: int) -> (float, list):
         dist = self.shortest_path_dist(id1, id2)
         if dist < 0:
-            return -1, None
+            return float('inf'), []
         final_list = []
         temp0 = path[id2]
         tempN = self.my_g.get_node(temp0.id)
