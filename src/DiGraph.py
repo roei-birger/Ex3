@@ -21,6 +21,15 @@ class DiGraph(GraphInterface):
     def e_size(self) -> int:
         return self.edge_size
 
+    def get_all_v(self) -> dict:
+        return self.vertices
+
+    def all_in_edges_of_node(self, id1: int) -> dict:
+        return self.get_node(id1).inEdges
+
+    def all_out_edges_of_node(self, id1: int) -> dict:
+        return self.get_node(id1).outEdges
+
     def get_mc(self) -> int:
         return self.mc
 

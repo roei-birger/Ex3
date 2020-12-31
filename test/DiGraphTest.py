@@ -69,6 +69,20 @@ class DiGraphTest(unittest.TestCase):
         g.add_edge(3, -1, 0)
         self.assertEqual(14, g.e_size(), "e_size didn't update the edgeSize after being added")
 
+    def test_get_all_v(self):
+        temp = {-101: -101, -15: -15, -1: -1, 0: 0, 3: 3, 13: 13, 53: 53, 66: 66, 555: 555}
+        self.assertEqual(temp.__str__(), g.get_all_v().__str__(), "get_all_v didn't return the correct dict")
+
+    def test_all_in_edges_of_node(self):
+        temp = {13: 8.9, -101: 7.6}
+        self.assertEqual(temp.__str__(), g.all_in_edges_of_node(3).__str__(), "all_in_edges_of_node didn't return the "
+                                                                              "correct dict")
+
+    def test_all_out_edges_of_node(self):
+        temp = {13: 8.9, -15: 0.1}
+        self.assertEqual(temp.__str__(), g.all_out_edges_of_node(3).__str__(), "all_out_edges_of_node didn't return "
+                                                                               "the correct dict")
+
     def test_get_mc_base(self):
         self.assertEqual(22, g.get_mc(), "get_mc didn't return the correct size")
 
