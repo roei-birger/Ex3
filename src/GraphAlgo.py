@@ -54,8 +54,10 @@ class GraphAlgo(GraphAlgoInterface):
 
         for i in self.my_g.vertices:
             id = i
-            pos = self.my_g.get_node(i).myLocation
-            nodes.append({"pos": pos, "id": id})
+            pos_list = self.my_g.get_node(i).myLocation
+            pos_string = "{},{},{}"
+            pos_string = pos_string.format(pos_list[0], pos_list[1], pos_list[2])
+            nodes.append({"pos": pos_string, "id": id})
 
         for j in self.my_g.vertices:
             for k in self.my_g.get_node(j).outEdges:

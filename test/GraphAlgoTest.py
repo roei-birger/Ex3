@@ -82,7 +82,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_save_and_lods(self):
         g = DiGraph()
-        g.add_node(NodeData(0).id)
+        g.add_node(NodeData(0).id, pos=(1, 1, 2))
         g.add_node(NodeData(3).id)
         g.add_node(NodeData(13).id)
         g.add_edge(0, 13, 8.9)
@@ -91,7 +91,7 @@ class MyTestCase(unittest.TestCase):
         ga = GraphAlgo(g)
 
         g1 = DiGraph()
-        g1.add_node(NodeData(0).id)
+        g1.add_node(NodeData(0).id, pos=(1, 1, 2))
         g1.add_node(NodeData(3).id)
         g1.add_node(NodeData(13).id)
         g1.add_edge(0, 13, 8.9)
