@@ -10,7 +10,7 @@ class NodeData:
         if location is not None:
             self.myLocation = location
         else:
-            self.myLocation = (0, 0, 0)
+            self.myLocation = (-1, -1, -1)
         self.myNeighbors = {}  # <id_node , node_data>
         self.inEdges = {}  # <id_src , weight>
         self.outEdges = {}  # <id_dest , weight>
