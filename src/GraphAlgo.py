@@ -1,6 +1,8 @@
 from typing import List
 from Map import Map
 import heapq
+from queue import *
+from collections import deque
 import json
 from GraphAlgoInterface import GraphAlgoInterface
 from NodeData import NodeData
@@ -158,11 +160,60 @@ class GraphAlgo(GraphAlgoInterface):
         return -1
 
     def connected_component(self, id1: int) -> list:
-        pass
+        if self.my_g is None or id1 not in self.my_g.vertices:
+            return []
+        if self.my_g.node_size == 1:
+            return [id1]
+        for i in self.my_g.vertices:
+            self.my_g.get_node(i).tag = 0
+        q = deque()
+        self.my_g.get_node(id1).tag = 1
+        q.append(id1)
+        my_list_out = []
+        while q:
+            temp = q.popleft()
+            if self.my_g.get_node(temp).tag == 1:
+                for j in self.my_g.get_node(temp).outEdges:
+                    if self.my_g.get_node(j).tag == 0:
+                        q.append(j)
+                        self.my_g.get_node(j).tag = 1
+            my_list_out.append(temp)
+            self.my_g.get_node(temp).tag = 2
+
+        for i in self.my_g.vertices:
+            self.my_g.get_node(i).tag = 0
+        self.my_g.get_node(id1).tag = 1
+        q.append(id1)
+        my_list_in = []
+        while q:
+            temp = q.popleft()
+            if self.my_g.get_node(temp).tag == 1:
+                for j in self.my_g.get_node(temp).inEdges:
+                    if self.my_g.get_node(j).tag == 0:
+                        q.append(j)
+                        self.my_g.get_node(j).tag = 1
+            my_list_in.append(temp)
+            self.my_g.get_node(temp).tag = 2
+        return list(set(my_list_out) & set(my_list_in))
 
     def connected_components(self) -> List[list]:
-        pass
+        if self.my_g is None:
+            return []
+        used = {}
+        final_list = []
+        for i in self.my_g.vertices:
+            if i not in used:
+                temp_list = self.connected_component(i)
+                for j in temp_list:
+                    used[j] = j
+                final_list.append(temp_list)
+        return final_list
+
+
+
+
+
+
 
     def plot_graph(self) -> None:
         pass
-

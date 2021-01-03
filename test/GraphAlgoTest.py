@@ -78,7 +78,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_shortest_path_null_graph(self):
         ga = GraphAlgo(None)
-        self.assertEqual((float('inf'), []), ga.shortest_path(0, 4), "shortest_path returns uncorrected list at null graph")
+        self.assertEqual((float('inf'), []), ga.shortest_path(0, 4),
+                         "shortest_path returns uncorrected list at null graph")
 
     def test_save_and_loads(self):
         g = DiGraph()
@@ -103,7 +104,35 @@ class MyTestCase(unittest.TestCase):
         g2 = ga1.get_graph()
         self.assertEqual(g1.__str__(), g2.__str__(), "load return different graph")
 
+    def test_connected_component_base(self):
+        ans_0 = [0, 66, 3, 555, 13, -15, -101, -1]
+        self.assertEqual(ans_0.__str__(), ga.connected_component(0).__str__(), "connected_component returns "
+                                                                               "uncorrected list")
 
+    def test_connected_component_all_connect(self):
+        ga.get_graph().add_edge(13, 53, 0.9)
+        ans_0 = [0, 66, 3, 555, 13, -15, 53, -101, -1]
+        self.assertEqual(ans_0.__str__(), ga.connected_component(0).__str__(), "connected_component returns "
+                                                                               "uncorrected list for all graph")
+
+    def test_connected_component_none_graph(self):
+        ga1 = GraphAlgo(None)
+        self.assertEqual("[]", ga1.connected_component(0).__str__(), "connected_component returns "
+                                                                     "uncorrected list for none graph")
+
+    def test_connected_component_not_exist_node(self):
+        self.assertEqual("[]", ga.connected_component(1).__str__(), "connected_component returns "
+                                                                    "uncorrected list not exist node")
+
+    def test_connected_components_base(self):
+        ans_0 = [[0, 66, 3, 555, 13, -15, -101, -1], [53]]
+        self.assertEqual(ans_0.__str__(), ga.connected_components().__str__(), "connected_components returns "
+                                                                               "uncorrected list")
+
+    def test_connected_components_none_graph(self):
+        ga1 = GraphAlgo(None)
+        self.assertEqual("[]", ga1.connected_components().__str__(), "connected_components returns "
+                                                                     "uncorrected list for none graph")
 
 
 
