@@ -56,35 +56,35 @@ class NodeData:
         return False
 
 
-def getWeight(self, dest: int) -> float:
-    """@return the weight of the edge."""
-    if dest in self.outEdges:
-        return self.outEdges.get(dest)
-    return -1
+    def getWeight(self, dest: int) -> float:
+        """@return the weight of the edge."""
+        if dest in self.outEdges:
+            return self.outEdges.get(dest)
+        return -1
 
 
-def __eq__(self, o: object) -> bool:
-    """Indicates whether some other NodeData is "equal to" this one.
-    by examining each element in the NodeInfo obj.
-    @param o (NodeData)
-    @return true if this NodeData is the same as the NodeData; false otherwise."""
-    if isinstance(o, NodeData):
-        if self.id != o.id:
-            return False
+    def __eq__(self, o: object) -> bool:
+        """Indicates whether some other NodeData is "equal to" this one.
+        by examining each element in the NodeInfo obj.
+        @param o (NodeData)
+        @return true if this NodeData is the same as the NodeData; false otherwise."""
+        if isinstance(o, NodeData):
+            if self.id != o.id:
+                return False
 
-        if self.tag != o.tag:
-            return False
+            if self.tag != o.tag:
+                return False
 
-        if self.info != o.info:
-            return False
+            if self.info != o.info:
+                return False
 
-        if self.myNeighbors != o.myNeighbors:
-            return False
+            if self.myNeighbors != o.myNeighbors:
+                return False
 
-        if self.inEdges != o.inEdges:
-            return False
+            if self.inEdges != o.inEdges:
+                return False
 
-        if self.outEdges != o.outEdges:
-            return False
-        return True
-    return False
+            if self.outEdges != o.outEdges:
+                return False
+            return True
+        return False

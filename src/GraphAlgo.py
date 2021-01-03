@@ -60,7 +60,7 @@ class GraphAlgo(GraphAlgoInterface):
         return True
 
     def save_to_json(self, file_name: str) -> bool:
-        """* This function saves the directed weighted graph to the given
+        """This function saves the directed weighted graph to the given
         file name - in JSON format
         @param file_name - the file name .
         @return true - iff the file was successfully saved"""
@@ -91,7 +91,7 @@ class GraphAlgo(GraphAlgoInterface):
         return True
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
-        """Returns the shortest path from node id1 to node id2 using Dijkstra's Algorithm
+        """Returns the shortest path from node id1 to node id2 using Dijkstra's Algorithm.
         @param id1: The start node id
         @param id2: The end node id
         @return: The distance of the path, a list of the nodes ids that the path goes through"""

@@ -78,9 +78,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_shortest_path_null_graph(self):
         ga = GraphAlgo(None)
-        self.assertEqual((-1, None), ga.shortest_path(0, 4), "shortest_path returns uncorrected list at null graph")
+        self.assertEqual((float('inf'), []), ga.shortest_path(0, 4), "shortest_path returns uncorrected list at null graph")
 
-    def test_save_and_lods(self):
+    def test_save_and_loads(self):
         g = DiGraph()
         g.add_node(NodeData(0).id, pos=(1, 1, 2))
         g.add_node(NodeData(3).id)
