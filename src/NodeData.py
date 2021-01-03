@@ -55,13 +55,11 @@ class NodeData:
             return True
         return False
 
-
     def getWeight(self, dest: int) -> float:
         """@return the weight of the edge."""
         if dest in self.outEdges:
             return self.outEdges.get(dest)
         return -1
-
 
     def __eq__(self, o: object) -> bool:
         """Indicates whether some other NodeData is "equal to" this one.
