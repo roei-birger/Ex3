@@ -55,10 +55,8 @@ The edge weight represents the cost of arrival from the source vertex to the des
  6. **shortest_path** - Finds the shortest path (what path we should choose on which edge) between 2 given nodes in the graph. <br />
  7. **connected_component** -Checks the Strongly Connected Component(SCC) node list of the given node id.<br />
  8. **connected_components** -Checks the list all the Strongly Connected Component(SCC) in the graph.<br />
-להוסיף פה את ה gui///
-
- /////////////////////
- 
+ 9. **plot_graph** - Plots the graph.<br />
+<br />
  <br /> 
  
 //////add diagram of the python class<br /> 
