@@ -53,10 +53,10 @@ The edge weight represents the cost of arrival from the source vertex to the des
  4. **load_from_json**- Loads the graph from a given file in JSON format.<br />
  5. **shortest_path_dist**- Calculates the shortest path distance between 2 given nodes. <br />
  6. **shortest_path** - Finds the shortest path (what path we should choose on which edge) between 2 given nodes in the graph. <br />
+ 7. **connected_component** -Checks the Strongly Connected Component(SCC) node list of the given node id.<br />
+ 8. **connected_components** -Checks the list all the Strongly Connected Component(SCC) in the graph.<br />
+להוסיף פה את ה gui///
 
-להוסיף פה את הקונקטים החדשים///
-
- 7. ???**isConnected** -Checks whither the graph is strongly connected.<br />
  /////////////////////
  
  <br /> 
