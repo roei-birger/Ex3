@@ -1,7 +1,6 @@
 from typing import List
 
 import matplotlib.pyplot as plt
-
 from Map import Map
 import heapq
 import random
@@ -224,18 +223,35 @@ class GraphAlgo(GraphAlgoInterface):
         return final_list
 
     def plot_graph(self) -> None:
+        """Plots the graph."""
         x = []
         y = []
 
         for i in self.my_g.vertices:
+            if self.my_g.get_node(i).myLocation == (-1, -1, -1):
+                self.my_g.get_node(i).myLocation = (random.uniform(0.0, 60.0), random.uniform(0.0, 50.0), 0.0)
             pos = self.my_g.get_node(i).myLocation
-            if pos == (-1, -1, -1):
-                pos = (random.uniform(0.0, 60.0), random.uniform(0.0, 50.0), 0.0)
             x.append(pos[0])
             y.append(pos[1])
-        # plt.plot(x, y)
-        plt.plot(x, y, 'D-')
+            # plt.plot(x, y)
+            plt.annotate(i, (pos[0], pos[1]+1))
+        plt.plot(x, y, 'o')
 
-        plt.title('Roei and Yaara graph')
+        print(self.connected_components())
+        for i in self.my_g.vertices:
+            for j in self.my_g.all_out_edges_of_node(i):
+                ix = self.my_g.get_node(i).myLocation[0]
+                iy = self.my_g.get_node(i).myLocation[1]
+                jx = self.my_g.get_node(j).myLocation[0]
+                jy = self.my_g.get_node(j).myLocation[1]
+                x_list = [ix, jx]
+                y_list = [iy, jy]
+                plt.plot(x_list, y_list)
+                #plt.annotate(self.my_g.get_node(i).getWeight(j), ((ix+jx)/2, (iy+jy)/2))
+
+        plt.title('A5')
 
         plt.show()
+
+
+

@@ -133,9 +133,10 @@ class MyTestCase(unittest.TestCase):
         ga1 = GraphAlgo(None)
         self.assertEqual("[]", ga1.connected_components().__str__(), "connected_components returns "
                                                                      "uncorrected list for none graph")
-    #
-    # def test_plot_graph(self):
-    #     ga.plot_graph()
+
+    def test_plot_graph(self):
+        ga.load_from_json("A5")
+        ga.plot_graph()
 
 
 if __name__ == '__main__':
