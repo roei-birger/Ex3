@@ -237,7 +237,6 @@ class GraphAlgo(GraphAlgoInterface):
             plt.annotate(i, (pos[0], pos[1]+1))
         plt.plot(x, y, 'o')
 
-        print(self.connected_components())
         for i in self.my_g.vertices:
             for j in self.my_g.all_out_edges_of_node(i):
                 ix = self.my_g.get_node(i).myLocation[0]
