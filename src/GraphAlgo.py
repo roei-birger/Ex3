@@ -1,7 +1,11 @@
 from typing import List
+
+import matplotlib.pyplot as plt
+
 from Map import Map
 import heapq
-from queue import *
+import random
+import math
 from collections import deque
 import json
 from GraphAlgoInterface import GraphAlgoInterface
@@ -219,6 +223,19 @@ class GraphAlgo(GraphAlgoInterface):
                 final_list.append(temp_list)
         return final_list
 
-
     def plot_graph(self) -> None:
-        pass
+        x = []
+        y = []
+
+        for i in self.my_g.vertices:
+            pos = self.my_g.get_node(i).myLocation
+            if pos == (-1, -1, -1):
+                pos = (random.uniform(0.0, 60.0), random.uniform(0.0, 50.0), 0.0)
+            x.append(pos[0])
+            y.append(pos[1])
+        # plt.plot(x, y)
+        plt.plot(x, y, 'D-')
+
+        plt.title('Roei and Yaara graph')
+
+        plt.show()
