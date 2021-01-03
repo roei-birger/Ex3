@@ -56,10 +56,10 @@ class DiGraph(GraphInterface):
         in addition inserting one node into the edges list of the others node.
         @return true if success."""
         if weight >= 0 and id1 in self.vertices and id2 in self.vertices and id1 != id2:
-            if id2 not in self.get_node(id1).outEdges:
-                self.edge_size = self.edge_size + 1
-            if id2 not in self.get_node(id1).outEdges or weight != self.get_node(id1).getWeight(id2):
-                self.mc = self.mc + 1
+            if id2 in self.get_node(id1).outEdges:
+                return False
+            self.edge_size = self.edge_size + 1
+            self.mc = self.mc + 1
             self.get_node(id1).addNi(self.get_node(id2), weight)
             return True
         return False
