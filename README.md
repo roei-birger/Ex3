@@ -57,13 +57,17 @@ The edge weight represents the cost of arrival from the source vertex to the des
  8. **connected_components** -Checks the list all the Strongly Connected Component(SCC) in the graph.<br />
  9. **plot_graph** - Plots the graph.<br />
 <br />
- <br /> 
  
-//////add diagram of the python class<br /> 
-//////add explane about Dijkstra's algorithm<br /> 
-//////add pic about directed weighted graph<br /> 
+ ## **Dijkstra's algorithm:**<br />
+ Dijkstra's is an algorithm for finding the shortest paths between nodes in a graph.<br />
+ More information - https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm<br />
+ 
+ ## **Gui:**<br />
+ **An example for displaying a grpah in the project:**<br />
+![An Example:](https://github.com/roei-birger/Ex3/blob/master/data/graph_example.PNG)<br />
 
-## **Clone repository**
+
+## **Clone repository**<br />
 
 ```
 $ git clone https://github.com/roei-birger/Ex3.git
