@@ -36,7 +36,7 @@ The edge weight represents the cost of arrival from the source vertex to the des
  **Map:**<br />
   This object represents a support object for the "shortestPath" method,
   at the "shortestPathDist" method the graph is tested to find the shortest
-  path between vertexses. Each vertex that is found in this way is preserved
+  path between vertices. Each vertex that is found in this way is preserved
   by this object in order to know which vertex was "his parent"
   on the way and what is the weight of the edge between them.
  
