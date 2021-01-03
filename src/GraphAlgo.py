@@ -160,6 +160,11 @@ class GraphAlgo(GraphAlgoInterface):
         return -1
 
     def connected_component(self, id1: int) -> list:
+        """
+        @param id1 - The node id
+        @return the Strongly Connected Component(SCC) node list of the given node id.
+        Notes:
+        If the graph is None or id1 is not in the graph, the function should return an empty list []"""
         if self.my_g is None or id1 not in self.my_g.vertices:
             return []
         if self.my_g.node_size == 1:
@@ -197,6 +202,11 @@ class GraphAlgo(GraphAlgoInterface):
         return list(set(my_list_out) & set(my_list_in))
 
     def connected_components(self) -> List[list]:
+        """
+        @return the list all the Strongly Connected Component(SCC) in the graph.
+        Notes:
+        If the graph is None, the function should return an empty list []
+        """
         if self.my_g is None:
             return []
         used = {}
@@ -208,11 +218,6 @@ class GraphAlgo(GraphAlgoInterface):
                     used[j] = j
                 final_list.append(temp_list)
         return final_list
-
-
-
-
-
 
 
     def plot_graph(self) -> None:
