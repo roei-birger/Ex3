@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 from Map import Map
 import heapq
 import random
-import math
 from collections import deque
 import json
 from GraphAlgoInterface import GraphAlgoInterface
@@ -233,7 +232,6 @@ class GraphAlgo(GraphAlgoInterface):
             pos = self.my_g.get_node(i).myLocation
             x.append(pos[0])
             y.append(pos[1])
-            # plt.plot(x, y)
             plt.annotate(i, (pos[0], pos[1]+1))
         plt.plot(x, y, 'o')
 
@@ -248,7 +246,7 @@ class GraphAlgo(GraphAlgoInterface):
                 plt.plot(x_list, y_list)
                 #plt.annotate(self.my_g.get_node(i).getWeight(j), ((ix+jx)/2, (iy+jy)/2))
 
-        plt.title('A5')
+        plt.title('Yaara & Roei graph')
 
         plt.show()
 
