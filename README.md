@@ -63,9 +63,10 @@ The edge weight represents the cost of arrival from the source vertex to the des
  More information - https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm<br />
  
  ## **Gui:**<br />
- **An example for displaying a grpah in the project:**<br />
+ **Some examples for displaying a grpah in the project:**<br />
+![An Example:](https://github.com/roei-birger/Ex3/blob/master/data/graph_2.png)<br />
+<br />
 ![An Example:](https://github.com/roei-birger/Ex3/blob/master/data/graph_example.PNG)<br />
-
 
 ## **Clone repository**<br />
 
