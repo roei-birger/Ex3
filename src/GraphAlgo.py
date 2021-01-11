@@ -241,9 +241,7 @@ class GraphAlgo(GraphAlgoInterface):
                 iy = self.my_g.get_node(i).myLocation[1]
                 jx = self.my_g.get_node(j).myLocation[0]
                 jy = self.my_g.get_node(j).myLocation[1]
-                x_list = [ix, jx]
-                y_list = [iy, jy]
-                plt.plot(x_list, y_list)
+                plt.annotate(text="", xy=(ix, iy), xytext=(jx, jy), arrowprops=dict(arrowstyle="<|-"))
                 #plt.annotate(self.my_g.get_node(i).getWeight(j), ((ix+jx)/2, (iy+jy)/2))
 
         plt.title('Yaara & Roei graph')
